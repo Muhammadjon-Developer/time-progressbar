@@ -1,0 +1,78 @@
+:root {
+  --second: 1000ms;
+  --minute: calc(var(--second) * 60);
+  --hour: calc(var(--minute) * 60);
+  --day: calc(var(--hour) * 24);
+  --year: calc(var(--day) * var(--days-in-year));
+  /* To be updated from JS */
+  --days-in-year: 365;
+
+  background-color: light-dark(#fff, #000);
+  color-scheme: light dark;
+  color: light-dark(#000, #fff);
+}
+
+@keyframes progress {
+  0% {
+    d: path("m1 1h0");
+  }
+}
+
+svg {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  path {
+    d: path("m1 1h100");
+  }
+}
+
+.container {
+  stroke: light-dark(#000, #fff);
+  stroke-width: 2;
+}
+
+.progress {
+  stroke: light-dark(#fff, #000);
+  stroke-width: 1;
+  animation-name: progress;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: calc(var(--milliseconds) * -1);
+}
+
+.second .progress {
+  animation-duration: 1s;
+}
+
+.minute .progress {
+  animation-duration: var(--minute);
+}
+
+.hour .progress {
+  animation-duration: var(--hour);
+}
+
+.day .progress {
+  animation-duration: var(--day);
+}
+
+.year .progress {
+  animation-duration: var(--year);
+}
+
+div {
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1ch;
+
+  span {
+    width: 8ch;
+  }
+}
+
+h1 {
+  font-family: sans-serif;
+}
